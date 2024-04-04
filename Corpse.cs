@@ -20,12 +20,14 @@ namespace MCGalaxy {
 		public override void Load(bool startup) {
 			//LOAD YOUR PLUGIN WITH EVENTS OR OTHER THINGS!
 			OnPlayerDyingEvent.Register(HandlePlayerDying, Priority.High);
+			OnPlayerDisconnectEvent.Register(HandlePlayerDisconnect, Priority.Low);
 			corpses.Clear();
 		}
                         
 		public override void Unload(bool shutdown) {
 			//UNLOAD YOUR PLUGIN BY SAVING FILES OR DISPOSING OBJECTS!
 			OnPlayerDyingEvent.Unregister(HandlePlayerDying);
+			OnPlayerDisconnectEvent.Unregister(HandlePlayerDisconnect);
 			foreach( var pair in corpses)
 			{
 				if (pair.Value == null)
@@ -52,6 +54,18 @@ namespace MCGalaxy {
 			}
 				
 			SpawnCorpse(p);
+        }
+		void HandlePlayerDisconnect(Player p, string reason)
+        {
+			if (corpses.ContainsKey(p))
+			{
+				if (corpses[p] != null)
+				{
+					PlayerBot.Remove(corpses[p]);
+				}
+				corpses.Remove(p);
+				
+			}
         }
 		int FindGround(Level level,int x, int y, int z)
 		{
