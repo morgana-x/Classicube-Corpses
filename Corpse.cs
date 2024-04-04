@@ -94,12 +94,12 @@ namespace MCGalaxy {
 			try {
 				y = FindGround(p.level, p.Pos.X/32, (p.Pos.Y/32), p.Pos.Z/32) * 32;
 				y += (32*2) - 5;
-				Player.Console.Message(y.ToString());
+				//Player.Console.Message(y.ToString());
 			}
 			catch( Exception e)
 			{
 				y = p.Pos.Y;
-				Player.Console.Message(e.ToString());
+				//Player.Console.Message(e.ToString());
 			}
 			//bot.Pos = new Position(p.Pos.X, y, p.Pos.Y);
 			
