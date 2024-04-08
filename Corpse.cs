@@ -14,7 +14,7 @@ namespace MCGalaxy {
 		public override string MCGalaxy_Version { get { return "1.9.1.2"; } }
 		public override int build { get { return 100; } }
 		public override string welcome { get { return "Loaded Message!"; } }
-		public override string creator { get { return "Venk's Private Server"; } }
+		public override string creator { get { return "morgana"; } }
 		public override bool LoadAtStartup { get { return true; } }
 		public Dictionary<Player, PlayerBot> corpses = new Dictionary<Player, PlayerBot>();
 		public override void Load(bool startup) {
